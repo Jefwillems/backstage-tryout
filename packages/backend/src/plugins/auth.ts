@@ -1,6 +1,6 @@
-import { createRouter } from '@backstage/plugin-auth-backend';
-import { Router } from 'express';
-import { PluginEnvironment } from '../types';
+import {createRouter, defaultAuthProviderFactories, providers} from '@backstage/plugin-auth-backend';
+import {Router} from 'express';
+import {PluginEnvironment} from '../types';
 
 export default async function createPlugin(
   env: PluginEnvironment,
@@ -11,5 +11,13 @@ export default async function createPlugin(
     database: env.database,
     discovery: env.discovery,
     tokenManager: env.tokenManager,
+    providerFactories: {
+      ...defaultAuthProviderFactories,
+      github: providers.github.create({
+        signIn: {
+          resolver: providers.github.resolvers.usernameMatchingUserEntityName()
+        }
+      })
+    }
   });
 }
