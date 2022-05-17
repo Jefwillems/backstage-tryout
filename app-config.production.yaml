@@ -1,0 +1,17 @@
+app:
+  # Should be the same as backend.baseUrl when using the `app-backend` plugin
+  baseUrl: https://backstage-tryout.herokuapp.com
+
+backend:
+  baseUrl: https://backstage-tryout.herokuapp.com
+  listen:
+    port:
+      $env: PORT
+  database:
+    client: pg
+    connection:
+      connectionString: ${DATABASE_URL}
+      database: d9sfkbgfdr04mu
+      ssl:
+        rejectUnauthorized: false
+    pluginDivisionMode: 'schema'
