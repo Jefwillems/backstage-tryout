@@ -9,5 +9,6 @@ metadata:
   #   backstage.io/techdocs-ref: dir:.
 spec:
   type: website
-  owner: john@example.com
+  owner: jef.willems@district09.gent
   lifecycle: experimental
+
